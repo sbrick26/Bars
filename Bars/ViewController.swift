@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
@@ -36,23 +37,36 @@ class ViewController: UIViewController {
     @IBOutlet weak var eWord2: UIButton!
     
     var exampleRhymes = [
-    ["snack","black","shack","whack","stack","crack", "back"],
-    ["phone","clone","grown","bone","loan","stone", "drone"],
-    ["hop","drop","stop","pop","cop","flop", "shop"],
-    ["flag","lag","swag","tag","brag","drag", "rag"],
-    ["wish","fish","squish","delish'","swish","dish", "kiss"],
-    ["applying","flying","crying","spying","sighing","dying", "supplying"],
-    ["short","sport","import","thwart","court","fort", "sort"],
-    ["supporter","reporter","shorter","mortar","transporter","quarter","exporter"],
-    ["beast","priest","deceased","feast","least","increased","east"],
-    ["way","day","getaway","decay","slay","spray","tray"]]
+    ["snack","black","shack","positive feedback","stack","crack", "paperback", "pack", "asthma attack", "hack", "rack", "insomniac"],
+    ["phone","clone","homegrown","bone","loan","stone", "drone", "postpone", "gemstone", "microphone", "rosetta stone", "testosterone"],
+    ["hop","drop","stop","pop","cop","flop", "shop", "workshop", "lollipop", "mall cop", "tabletop", "eavesdrop"],
+    ["flag","lag","swag","tag","brag","drag", "rag", "zig-zag", "nag", "sag", "royal stag", "tool bag"],
+    ["wish","fish","squish","delish'","swish","dish", "kiss", "selfish", "catfish", "knish", "niche", "jelyfish"],
+    ["applying","flying","crying","spying","sighing","dying", "supplying", "electrifying", "oversimplifying", "identifying", "denying", "disqualifying"],
+    ["short","sport","import","thwart","court","fort", "sort", "financial support", "medical report", "holiday resort", "airport", "escort"],
+    ["supporter","reporter","shorter","mortar","transporter","quarter","exporter", "snorter", "importer", "sorter", "court her", "deport her"],
+    ["beast","priest","deceased","feast","least","increased","east", "ceased", "yeast", "greased", "middle east", "released"],
+    ["way","day","getaway","airway","slay","spray","tray", "radioactive decay", "hideaway", "clay", "paraguay", "lingerie"],
+    ["computer", "hooter", "tutor", "scooter", "shooter", "commuter", "persecutor", "suitor", "", "", "", ""],
+    ["slow", "glow", "grow", "throw", "combo", "free throw", "status quo", "tornado", "indigo", "potato", "pistachio", "tomorrow"],
+    ["dog", "frog", "fog", "smog", "underdog", "dialouge", "demagogue", "analog", "catalogue", "jog", "hedgehog", "monologue"],
+    ["beat", "feet", "eat", "suite", "heat", "wall street", "petite", "concrete", "seat", "trick or treat", "street", "fleet"],
+    ["bars", "stars", "mars", "cars", "tzars", "bazaars", "guitars", "memoirs", "handlebars", "superstars", "seminars", "scars"],
+    ["now", "how", "meow", "you can bow", "highbrow", "endow", "plow", "eyebrow", "chow", "up until now", "cash cow", "somehow", "just now"],
+    ["rattlesnake", "bake", "shake", "fake", "make", "take", "stake", "mistake", "cake", "headache", "emergency brake", "uptake"],
+    ["crises", "slices", "spices", "devices", "vices", "prices", "sacrifices", "suffices", "entices", "advise his", "biases", "revises"],
+    ["rap", "app", "cap", "lap", "wiretap", "recap", "asap", "trap", "scrap",  "kidnap", "shrink wrap", "slap", "nap", "tap", "zap", "flap", "clap", "strap", "map", "booby trap", "zap"],
+    ["flip", "dip", "strip", "lip", "tie clip", "scholarship", "citizenship", "dictatorship", "spaceship", "battleship", "road trip", "warship", "whip"],
+    ["school", "cool", "drool", "piano stool", "dipole molecule",  "swimming pool", "ridicule", "april fool", "you’re a fool", "tool", "jewel", "fuel", "mule"],
+    ["tsunami", "umami", "salami", "pastrami", "origami", "your mommy", "swami", "call me", "johnny", "draw me", "massage me", "scrawny"]
+    ]
     
     var rhymeArray: [String] = []
     var storArray1: [String] = []
     var storArray2: [String] = []
     var storArray3: [String] = []
     var storArray4: [String] = []
-    var exampleInts = [0,1,2,3,4,5,6,7,8,9]
+    var exampleInts = [0,1,2,3,4,5,6,7,8,9] //change this after updating the database
     var examplePositions = [0,1,2,3,4,5,6]
     var randomInt = 0
     var randomIndex = 0
@@ -85,9 +99,42 @@ class ViewController: UIViewController {
         buttonChange(storArray4)
     }
     
+    
+    var backgroundMusicPlayer = AVAudioPlayer()
+    
+    func playBackgroundMusic(filename: String) {
+        let url = NSBundle.mainBundle().URLForResource(filename, withExtension: nil)
+        guard let newURL = url else {
+            print("Could not find file: \(filename)")
+            return
+        }
+        do {
+            backgroundMusicPlayer = try AVAudioPlayer(contentsOfURL: newURL)
+            backgroundMusicPlayer.numberOfLoops = -1
+            backgroundMusicPlayer.prepareToPlay()
+            backgroundMusicPlayer.play()
+        } catch let error as NSError {
+            print(error.description)
+        }
+    }
+
+    
+    func updateExampleInts(array: [Int])
+    {
+        //load number 0 to n-1 in this array for indexing the array in the app
+        exampleInts = []
+        var counter = exampleRhymes.count - 1
+        for int in  0...counter{
+            exampleInts.append(int)
+        }
+    }
+    
     func randomAWordGenerator(){
-        randomInt = Int(arc4random_uniform(9 + 1)) //picks random number from 0 - 9
+        updateExampleInts(exampleInts)
+        var number = exampleRhymes.count + 1
+        randomInt = Int(arc4random_uniform(UInt32(number))) //picks random number from 0 - one less than the number
         print("First randomInt = \(randomInt)")
+    
         for int in exampleInts // goes through the number array
         {
             if int == randomInt
@@ -266,22 +313,54 @@ class ViewController: UIViewController {
         }
         
         rhymeArray = []
-        exampleInts = [0,1,2,3,4,5,6,7,8,9]
+        updateExampleInts(exampleInts)
         examplePositions = [0,1,2,3,4,5,6]
     }
     
+    
+    
+   var player: AVPlayer = AVPlayer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a nib
+        
+        
+        
+      
+            
+            // get the path of our file
+            let myFilePathString = NSBundle.mainBundle().pathForResource("Beat1", ofType: "mp3")
+            print(myFilePathString)
+            
+            if let myFilePathString = myFilePathString{
+                let myFilePathURL = NSURL(fileURLWithPath: myFilePathString)
+                print(myFilePathURL)
+                print(myFilePathString)
+                
+                do{
+                    try player = AVPlayer(URL: myFilePathURL)
+                    
+                    player.play()
+                    
+                }catch
+                {
+                    print("error")
+                }
+                
+            }
+        
         
         randomAWordGenerator()
         randomAlternateGenerator()
-        var helloWorldTimer = NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: Selector("randomAlternateGenerator"), userInfo: nil, repeats: true)
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector:Selector("setProgress"), userInfo: nil, repeats: true)
+        
+        var helloWorldTimer = NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: #selector(ViewController.randomAlternateGenerator), userInfo: nil, repeats: true)
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector:#selector(ViewController.setProgress), userInfo: nil, repeats: true)
     }
     
-    func buttonChange(var arrayButton: [String]){
+    func buttonChange( var arrayButton: [String]){
         randomInt = Int(arc4random_uniform(9 + 1)) //picks random number from 0 - 9
         print("First randomInt = \(randomInt)")
         for int in exampleInts // goes through the number array
