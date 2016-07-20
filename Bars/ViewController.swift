@@ -355,7 +355,7 @@ class ViewController: UIViewController {
         randomAlternateGenerator()
         
         
-        var helloWorldTimer = NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: #selector(ViewController.randomAlternateGenerator), userInfo: nil, repeats: true)
+        var helloWorldTimer = NSTimer.scheduledTimerWithTimeInterval(8.1, target: self, selector: #selector(ViewController.randomAlternateGenerator), userInfo: nil, repeats: true)
         
         timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector:#selector(ViewController.setProgress), userInfo: nil, repeats: true)
     }
@@ -428,8 +428,8 @@ class ViewController: UIViewController {
 
     func setProgress() {
         time += 0.1
-        progressBar.progress = time / 4
-        if time >= 4 {
+        progressBar.progress = time / 8.1
+        if time >= 8.1 {
             time = 0.1
         }
     }
