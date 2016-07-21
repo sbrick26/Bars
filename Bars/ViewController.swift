@@ -99,26 +99,6 @@ class ViewController: UIViewController {
         buttonChange(storArray4)
     }
     
-    
-    var backgroundMusicPlayer = AVAudioPlayer()
-    
-    func playBackgroundMusic(filename: String) {
-        let url = NSBundle.mainBundle().URLForResource(filename, withExtension: nil)
-        guard let newURL = url else {
-            print("Could not find file: \(filename)")
-            return
-        }
-        do {
-            backgroundMusicPlayer = try AVAudioPlayer(contentsOfURL: newURL)
-            backgroundMusicPlayer.numberOfLoops = -1
-            backgroundMusicPlayer.prepareToPlay()
-            backgroundMusicPlayer.play()
-        } catch let error as NSError {
-            print(error.description)
-        }
-    }
-
-    
     func updateExampleInts(array: [Int])
     {
         //load number 0 to n-1 in this array for indexing the array in the app
@@ -317,39 +297,13 @@ class ViewController: UIViewController {
         examplePositions = [0,1,2,3,4,5,6]
     }
     
-    
-    
-   var player: AVPlayer = AVPlayer()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib
-
-            // get the path of our file
-            let myFilePathString = NSBundle.mainBundle().pathForResource("Beat1", ofType: "mp3")
-            print(myFilePathString)
-            
-            if let myFilePathString = myFilePathString{
-                let myFilePathURL = NSURL(fileURLWithPath: myFilePathString)
-                print(myFilePathURL)
-                print(myFilePathString)
-                
-                do{
-                    try player = AVPlayer(URL: myFilePathURL)
-                    
-                    player.play()
-                    
-                }catch
-                {
-                    print("error")
-                }
-                
-            }
         
+        BackgroundMusic.playMusic()
         
         randomAWordGenerator()
         randomAlternateGenerator()
-        
         
         var helloWorldTimer = NSTimer.scheduledTimerWithTimeInterval(8.1, target: self, selector: #selector(ViewController.randomAlternateGenerator), userInfo: nil, repeats: true)
         
@@ -436,4 +390,6 @@ class ViewController: UIViewController {
     }
 
 }
+
+
 

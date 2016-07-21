@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Launch Screen-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController title="Launch Screen" id="01J-lp-oVM" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
@@ -17,17 +17,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BARS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs4-Hj-r9k">
-                                <rect key="frame" x="233.5" y="271" width="133.5" height="58.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
-                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barstransparentj.png" translatesAutoresizingMaskIntoConstraints="NO" id="pIQ-Ts-adX">
+                                <rect key="frame" x="240" y="268" width="120" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="HRc-y7-iDq"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="SBA-Hj-Z3Q"/>
+                                    <constraint firstAttribute="height" constant="64" id="X12-oq-uB8"/>
+                                    <constraint firstAttribute="width" constant="120" id="Xmh-ns-dZQ"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="HRc-y7-iDq"/>
+                                        <exclude reference="SBA-Hj-Z3Q"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.31372549019607843" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="fs4-Hj-r9k" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dqu-LI-bVy"/>
-                            <constraint firstItem="fs4-Hj-r9k" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ekw-8s-yqC"/>
+                            <constraint firstItem="pIQ-Ts-adX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2hr-3r-qLr"/>
+                            <constraint firstItem="pIQ-Ts-adX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="sdx-lR-1vp"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,4 +45,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="barstransparentj.png" width="866" height="433"/>
+    </resources>
 </document>

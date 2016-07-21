@@ -359,12 +359,12 @@
                                 <exclude reference="Lgf-BG-IxL"/>
                                 <exclude reference="VJb-1z-uav"/>
                                 <exclude reference="oQ1-sT-Pd9"/>
+                                <exclude reference="kLG-yw-DDK"/>
                                 <exclude reference="941-M0-26K"/>
                                 <exclude reference="Hbp-wS-dhe"/>
                                 <exclude reference="hYw-cL-Ocm"/>
                                 <exclude reference="14C-B6-WK8"/>
                                 <exclude reference="oGZ-eX-CH1"/>
-                                <exclude reference="kLG-yw-DDK"/>
                                 <exclude reference="scI-lq-33r"/>
                             </mask>
                         </variation>
@@ -390,7 +390,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="179" y="308"/>
+            <point key="canvasLocation" x="185" y="308"/>
         </scene>
     </scenes>
 </document>
