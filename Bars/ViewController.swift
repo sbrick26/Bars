@@ -324,11 +324,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib
-        
-        
-        
-      
-            
+
             // get the path of our file
             let myFilePathString = NSBundle.mainBundle().pathForResource("Beat1", ofType: "mp3")
             print(myFilePathString)
@@ -379,7 +375,7 @@ class ViewController: UIViewController {
         print("storArray1: ")
         print(arrayButton)
         
-        examplePositions = [0,1,2,3,4,5,6]
+        examplePositions = [0,1,2,3,4,5,6,7,8,9,10,11]
         
         while examplePositions.count > 0
         {
@@ -400,24 +396,24 @@ class ViewController: UIViewController {
             print("example Positions: ")
             print(examplePositions)
             
-            if currentCount == 6{
+            if currentCount == 11{
                 rhymeWord.text = randomRhymeWord
                 random1 = actualInt
             }
-            else if currentCount == 5{
+            else if currentCount == 10{
                 rWord1.text = randomRhymeWord
                 random2 = actualInt
             }
-            else if currentCount == 4{
+            else if currentCount == 9{
                 rWord2.text = randomRhymeWord
             }
-            else if currentCount == 3{
+            else if currentCount == 8{
                 rWord3.text = randomRhymeWord
             }
-            else if currentCount == 2{
+            else if currentCount == 7{
                 rWord4.text = randomRhymeWord
             }
-            else if currentCount == 1{
+            else if currentCount == 6{
                 rWord5.text = randomRhymeWord
             }
             else{
