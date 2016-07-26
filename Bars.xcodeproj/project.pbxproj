@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		4EDC162F975BAD6C1BD6DF7A /* Pods_Bars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CDAE765F4A5209CDABDE6C /* Pods_Bars.framework */; };
 		C42FBCA31D4026EF001CDDB9 /* Beat1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C42FBCA21D4026EF001CDDB9 /* Beat1.mp3 */; };
+		C476F44C1D42CFA50015E59A /* TalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476F44B1D42CFA50015E59A /* TalkViewController.swift */; };
 		C48865E21D37FA8100D2722C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48865E11D37FA8100D2722C /* AppDelegate.swift */; };
 		C48865E41D37FA8100D2722C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48865E31D37FA8100D2722C /* ViewController.swift */; };
 		C48865E71D37FA8100D2722C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48865E51D37FA8100D2722C /* Main.storyboard */; };
 		C48865EA1D37FA8100D2722C /* Bars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C48865E81D37FA8100D2722C /* Bars.xcdatamodeld */; };
 		C48865EC1D37FA8100D2722C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C48865EB1D37FA8100D2722C /* Assets.xcassets */; };
 		C48865EF1D37FA8100D2722C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48865ED1D37FA8100D2722C /* LaunchScreen.storyboard */; };
+		C4C358301D47D71700CC3F2E /* SKSNLUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3582F1D47D71700CC3F2E /* SKSNLUViewController.swift */; };
+		C4C358381D47DA8F00CC3F2E /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4C358341D47DA8F00CC3F2E /* FontAwesome.otf */; };
+		C4C358391D47DA8F00CC3F2E /* sk_error.pcm in Resources */ = {isa = PBXBuildFile; fileRef = C4C358351D47DA8F00CC3F2E /* sk_error.pcm */; };
+		C4C3583A1D47DA8F00CC3F2E /* sk_start.pcm in Resources */ = {isa = PBXBuildFile; fileRef = C4C358361D47DA8F00CC3F2E /* sk_start.pcm */; };
+		C4C3583B1D47DA8F00CC3F2E /* sk_stop.pcm in Resources */ = {isa = PBXBuildFile; fileRef = C4C358371D47DA8F00CC3F2E /* sk_stop.pcm */; };
 		C4D04D381D41821D00AE2714 /* SKSConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D04D371D41821D00AE2714 /* SKSConfiguration.swift */; };
 		C4D04D441D41892700AE2714 /* BackgroundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D04D431D41892700AE2714 /* BackgroundMusic.swift */; };
 		C4D04D481D418CDC00AE2714 /* barstransparentj.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D04D471D418CDC00AE2714 /* barstransparentj.png */; };
@@ -25,6 +31,7 @@
 		45CDAE765F4A5209CDABDE6C /* Pods_Bars.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bars.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4781F4E1E8572CE4F8066548 /* Pods-Bars.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bars.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bars/Pods-Bars.release.xcconfig"; sourceTree = "<group>"; };
 		C42FBCA21D4026EF001CDDB9 /* Beat1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Beat1.mp3; sourceTree = "<group>"; };
+		C476F44B1D42CFA50015E59A /* TalkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkViewController.swift; sourceTree = "<group>"; };
 		C48865DE1D37FA8100D2722C /* Bars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C48865E11D37FA8100D2722C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C48865E31D37FA8100D2722C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,6 +40,11 @@
 		C48865EB1D37FA8100D2722C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C48865EE1D37FA8100D2722C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C48865F01D37FA8100D2722C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4C3582F1D47D71700CC3F2E /* SKSNLUViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKSNLUViewController.swift; sourceTree = "<group>"; };
+		C4C358341D47DA8F00CC3F2E /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		C4C358351D47DA8F00CC3F2E /* sk_error.pcm */ = {isa = PBXFileReference; lastKnownFileType = file; path = sk_error.pcm; sourceTree = "<group>"; };
+		C4C358361D47DA8F00CC3F2E /* sk_start.pcm */ = {isa = PBXFileReference; lastKnownFileType = file; path = sk_start.pcm; sourceTree = "<group>"; };
+		C4C358371D47DA8F00CC3F2E /* sk_stop.pcm */ = {isa = PBXFileReference; lastKnownFileType = file; path = sk_stop.pcm; sourceTree = "<group>"; };
 		C4D04D371D41821D00AE2714 /* SKSConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKSConfiguration.swift; sourceTree = "<group>"; };
 		C4D04D431D41892700AE2714 /* BackgroundMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundMusic.swift; sourceTree = "<group>"; };
 		C4D04D471D418CDC00AE2714 /* barstransparentj.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barstransparentj.png; sourceTree = "<group>"; };
@@ -75,7 +87,9 @@
 			children = (
 				C4DBB1441D3FF139007C8524 /* AVFoundation.framework */,
 				C48865E01D37FA8100D2722C /* Bars */,
+				C4C358331D47D84300CC3F2E /* Speech Dependencies */,
 				C48865DF1D37FA8100D2722C /* Products */,
+				C4C3583C1D47DA9400CC3F2E /* Resources */,
 				4541DEF308C37E47AC5A3D86 /* Pods */,
 				8429FDE24AF29332915595C1 /* Frameworks */,
 			);
@@ -92,7 +106,7 @@
 		C48865E01D37FA8100D2722C /* Bars */ = {
 			isa = PBXGroup;
 			children = (
-				C4D04D371D41821D00AE2714 /* SKSConfiguration.swift */,
+				C476F44B1D42CFA50015E59A /* TalkViewController.swift */,
 				C48865E11D37FA8100D2722C /* AppDelegate.swift */,
 				C48865E31D37FA8100D2722C /* ViewController.swift */,
 				C42FBCA21D4026EF001CDDB9 /* Beat1.mp3 */,
@@ -104,6 +118,28 @@
 				C48865E81D37FA8100D2722C /* Bars.xcdatamodeld */,
 				C4D04D431D41892700AE2714 /* BackgroundMusic.swift */,
 			);
+			path = Bars;
+			sourceTree = "<group>";
+		};
+		C4C358331D47D84300CC3F2E /* Speech Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				C4D04D371D41821D00AE2714 /* SKSConfiguration.swift */,
+				C4C3582F1D47D71700CC3F2E /* SKSNLUViewController.swift */,
+			);
+			name = "Speech Dependencies";
+			path = Bars;
+			sourceTree = "<group>";
+		};
+		C4C3583C1D47DA9400CC3F2E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C4C358341D47DA8F00CC3F2E /* FontAwesome.otf */,
+				C4C358361D47DA8F00CC3F2E /* sk_start.pcm */,
+				C4C358371D47DA8F00CC3F2E /* sk_stop.pcm */,
+				C4C358351D47DA8F00CC3F2E /* sk_error.pcm */,
+			);
+			name = Resources;
 			path = Bars;
 			sourceTree = "<group>";
 		};
@@ -171,7 +207,11 @@
 			files = (
 				C48865EF1D37FA8100D2722C /* LaunchScreen.storyboard in Resources */,
 				C48865EC1D37FA8100D2722C /* Assets.xcassets in Resources */,
+				C4C358391D47DA8F00CC3F2E /* sk_error.pcm in Resources */,
+				C4C358381D47DA8F00CC3F2E /* FontAwesome.otf in Resources */,
 				C48865E71D37FA8100D2722C /* Main.storyboard in Resources */,
+				C4C3583B1D47DA8F00CC3F2E /* sk_stop.pcm in Resources */,
+				C4C3583A1D47DA8F00CC3F2E /* sk_start.pcm in Resources */,
 				C42FBCA31D4026EF001CDDB9 /* Beat1.mp3 in Resources */,
 				C4D04D481D418CDC00AE2714 /* barstransparentj.png in Resources */,
 			);
@@ -236,7 +276,9 @@
 				C48865EA1D37FA8100D2722C /* Bars.xcdatamodeld in Sources */,
 				C4D04D381D41821D00AE2714 /* SKSConfiguration.swift in Sources */,
 				C48865E21D37FA8100D2722C /* AppDelegate.swift in Sources */,
+				C476F44C1D42CFA50015E59A /* TalkViewController.swift in Sources */,
 				C4D04D441D41892700AE2714 /* BackgroundMusic.swift in Sources */,
+				C4C358301D47D71700CC3F2E /* SKSNLUViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

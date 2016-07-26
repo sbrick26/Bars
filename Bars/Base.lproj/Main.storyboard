@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Hd2-Jd-ltk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mdA-dN-J7K">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -391,6 +391,82 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="185" y="308"/>
+        </scene>
+        <!--Talk View Controller-->
+        <scene sceneID="y8w-oE-PV0">
+            <objects>
+                <viewController id="mdA-dN-J7K" customClass="TalkViewController" customModule="Bars" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dv0-ON-WBq"/>
+                        <viewControllerLayoutGuide type="bottom" id="WVW-g8-PdV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hbX-QO-1Cv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3D-gE-hKS">
+                                <rect key="frame" x="279" y="318" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="7Wm-Fi-7ew"/>
+                                    <constraint firstAttribute="width" constant="42" id="oY1-He-yFQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vWu-Wz-mBL">
+                                <rect key="frame" x="20" y="483" width="560" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="y6a-Hz-xDg"/>
+                                </constraints>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2X-fM-3Wh">
+                                <rect key="frame" x="285" y="180" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Bwf-zE-lCS"/>
+                                    <constraint firstAttribute="width" constant="30" id="XDP-mE-Dau"/>
+                                </constraints>
+                                <state key="normal" title="Talk"/>
+                                <connections>
+                                    <action selector="talkButton:" destination="mdA-dN-J7K" eventType="touchUpInside" id="Sg4-Az-s7a"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listeingn:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnQ-wY-95a">
+                                <rect key="frame" x="156" y="252" width="288" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="53i-H5-iBk"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="288" id="gsE-si-7Jd"/>
+                                    <constraint firstAttribute="height" constant="21" id="h9J-Qj-5eg"/>
+                                    <constraint firstAttribute="width" constant="288" id="rwu-dd-XMX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cnQ-wY-95a" firstAttribute="top" secondItem="N2X-fM-3Wh" secondAttribute="bottom" constant="42" id="03s-JP-FV1"/>
+                            <constraint firstItem="cnQ-wY-95a" firstAttribute="top" secondItem="N2X-fM-3Wh" secondAttribute="bottom" constant="42" id="3AW-dO-Dlb"/>
+                            <constraint firstItem="WVW-g8-PdV" firstAttribute="top" secondItem="vWu-Wz-mBL" secondAttribute="bottom" constant="115" id="3Gw-4u-mqg"/>
+                            <constraint firstItem="O3D-gE-hKS" firstAttribute="top" secondItem="cnQ-wY-95a" secondAttribute="bottom" constant="45" id="3Ng-s7-yT6"/>
+                            <constraint firstItem="cnQ-wY-95a" firstAttribute="centerX" secondItem="hbX-QO-1Cv" secondAttribute="centerX" id="AeZ-zj-eC2"/>
+                            <constraint firstItem="N2X-fM-3Wh" firstAttribute="top" secondItem="dv0-ON-WBq" secondAttribute="bottom" constant="160" id="abZ-gV-fPK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vWu-Wz-mBL" secondAttribute="trailing" id="j4T-b5-Ygc"/>
+                            <constraint firstItem="N2X-fM-3Wh" firstAttribute="centerX" secondItem="hbX-QO-1Cv" secondAttribute="centerX" id="jjY-fW-Zez"/>
+                            <constraint firstItem="vWu-Wz-mBL" firstAttribute="leading" secondItem="hbX-QO-1Cv" secondAttribute="leadingMargin" id="ldb-F4-jnA"/>
+                            <constraint firstItem="O3D-gE-hKS" firstAttribute="centerX" secondItem="hbX-QO-1Cv" secondAttribute="centerX" id="osK-DI-Mdo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="O3D-gE-hKS" id="Prm-GI-ISi"/>
+                        <outlet property="listeningLabel" destination="cnQ-wY-95a" id="xKe-eV-s71"/>
+                        <outlet property="volumeLevelProgressView" destination="vWu-Wz-mBL" id="9gK-zY-uwY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="714-Kb-ONZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-325" y="-1526"/>
         </scene>
     </scenes>
 </document>

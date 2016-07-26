@@ -297,19 +297,6 @@ class ViewController: UIViewController {
         examplePositions = [0,1,2,3,4,5,6]
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        BackgroundMusic.playMusic()
-        
-        randomAWordGenerator()
-        randomAlternateGenerator()
-        
-        var helloWorldTimer = NSTimer.scheduledTimerWithTimeInterval(8.1, target: self, selector: #selector(ViewController.randomAlternateGenerator), userInfo: nil, repeats: true)
-        
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector:#selector(ViewController.setProgress), userInfo: nil, repeats: true)
-    }
-    
     func buttonChange( var arrayButton: [String]){
         randomInt = Int(arc4random_uniform(9 + 1)) //picks random number from 0 - 9
         print("First randomInt = \(randomInt)")
@@ -383,6 +370,20 @@ class ViewController: UIViewController {
             time = 0.1
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        BackgroundMusic.playMusic()
+        
+        randomAWordGenerator()
+        randomAlternateGenerator()
+        
+        var helloWorldTimer = NSTimer.scheduledTimerWithTimeInterval(8.1, target: self, selector: #selector(ViewController.randomAlternateGenerator), userInfo: nil, repeats: true)
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector:#selector(ViewController.setProgress), userInfo: nil, repeats: true)
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

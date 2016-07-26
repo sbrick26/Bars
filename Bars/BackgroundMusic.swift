@@ -23,7 +23,6 @@ class BackgroundMusic{
             
             do{
                 try player = AVPlayer(URL: myFilePathURL)
-                
                 player.play()
                 
             }catch
