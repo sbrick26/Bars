@@ -1,12 +1,26 @@
 PODS:
+  - Alamofire (3.4.1)
+  - AlamofireImage (2.4.1):
+    - Alamofire (~> 3.3)
+  - AlamofireNetworkActivityIndicator (1.0.1):
+    - Alamofire (~> 3.3)
   - SpeechKit (2.1.7)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
+  - AlamofireNetworkActivityIndicator
   - SpeechKit
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  AlamofireImage: 3ccf3347d9ea24580dc11fb892770a0be6a29826
+  AlamofireNetworkActivityIndicator: 49a6e39afb947136f7b1872bae2d684957c26697
   SpeechKit: 62717350ae29e7002a8ac35970ce92dccf2d1b71
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: a5c0c1f529bb1f3d53fcccbe3c5cf321234879b9
+PODFILE CHECKSUM: d50eda19e2422ced5c17dd79643caf438fa514ab
 
 COCOAPODS: 1.0.1

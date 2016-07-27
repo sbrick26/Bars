@@ -4,7 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AlamofireNetworkActivityIndicator.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Bars.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -12,7 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6FFCEF58565EE2EEB0A5E71A6E5789EF</key>
+		<key>05094CC4A047119F7ADC14EE74C4881C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0B6049B73269AE31CF619B2AE8B30662</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>228FFC4E78F899B58C33C57F31513A8E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>36F2C80A91B4F839FAA1C07210817984</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -7,4 +7,9 @@ target 'Bars' do
 
   # Pods for Bars
 pod 'SpeechKit'
+pod ‘Alamofire’
+pod ‘AlamofireImage’
+pod ‘AlamofireNetworkActivityIndicator’
+pod ‘SwiftyJSON’
+
 end

@@ -50,6 +50,7 @@ class TalkViewController: UIViewController, SKTransactionDelegate {
     @IBAction func talkButton(sender: AnyObject) {
         print("button hit")
         
+        
         switch state {
         case .SKSIdle:
             //begin recording (start on button press), stop on a short pause 
@@ -151,7 +152,7 @@ class TalkViewController: UIViewController, SKTransactionDelegate {
         wordUni = wordUni.lowercaseString
         print(wordUni)
         
-        ViewController().findRhymeWord(wordUni)
+        //ViewController().findRhymeWord(wordUni)
        
         
         state = .SKSIdle

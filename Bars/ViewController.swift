@@ -8,8 +8,10 @@
 
 import UIKit
 import AVFoundation
-
-
+import SwiftyJSON
+import Alamofire
+import AlamofireImage
+import AlamofireNetworkActivityIndicator
 
 class ViewController: UIViewController {
     
@@ -123,6 +125,25 @@ class ViewController: UIViewController {
         
     }
     
+    func api(){
+        
+        let apiToContact = "http://rhymebrain.com/talk?function=getRhymes&word=\(wordUni)"
+        // This code will call the rhyming words
+        Alamofire.request(.GET, apiToContact).validate().responseJSON() { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let rhymeData = JSON(value)
+                    //let allRhymeData = rhymeData.arrayValue
+                print(rhymeData)
+                    
+                }
+            case .Failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     func setSpokenRhymes(){
         
         var indexedArray = exampleRhymes[indexRow]
@@ -145,6 +166,7 @@ class ViewController: UIViewController {
             var actualInt = examplePositions[randomInt]
             var randomRhymeWord = indexedArray[actualInt]
             examplePositions.removeAtIndex(randomInt)
+            
             if currentCount == 11{
                 //rWord1.text = randomRhymeWord
                 print(randomRhymeWord)
