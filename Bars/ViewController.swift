@@ -9,10 +9,13 @@
 import UIKit
 import AVFoundation
 
+
+
 class ViewController: UIViewController {
     
     var time : Float = 0.0
     var timer: NSTimer?
+    var word: String = ""
 
     @IBOutlet weak var progressBar: UIProgressView!
     
@@ -98,6 +101,80 @@ class ViewController: UIViewController {
     @IBAction func e2Action(sender: AnyObject) {
         buttonChange(storArray4)
     }
+    
+    var indexRow = 0
+    var indexColumn = 0
+
+    func findRhymeWord(spokenWord: String){
+        //search through local database and get position of the spoken word
+        for row in 0...(exampleRhymes.count-1) {
+            for column in 0...(exampleRhymes[row].count-1){
+                if spokenWord == exampleRhymes[row][column]{
+                    indexRow = row
+                    indexColumn = column
+                    print("row: \(indexRow)")
+                    print("column: \(indexColumn)")
+                }
+            }
+        }
+        setSpokenRhymes()
+        
+        //if not found, search through rhyme API
+        
+    }
+    
+    func setSpokenRhymes(){
+        
+        var indexedArray = exampleRhymes[indexRow]
+
+        examplePositions = [0,1,2,3,4,5,6,7,8,9,10]
+        
+        //search through the indexed array for the word, and remove the word when found
+        for word in 0...indexedArray.count-1{
+            if indexedArray[word] == wordUni {
+                indexedArray.removeAtIndex(word)
+                //examplePositions.removeAtIndex(word)
+                break
+            }
+        }
+        
+        while examplePositions.count > 0
+        {
+            var currentCount = examplePositions.count
+            randomInt = Int(arc4random_uniform(UInt32(currentCount)))
+            var actualInt = examplePositions[randomInt]
+            var randomRhymeWord = indexedArray[actualInt]
+            examplePositions.removeAtIndex(randomInt)
+            if currentCount == 11{
+                //rWord1.text = randomRhymeWord
+                print(randomRhymeWord)
+                random1 = actualInt
+            }
+            else if currentCount == 10{
+                //rWord2.text = randomRhymeWord
+                print(randomRhymeWord)
+                random2 = actualInt
+            }
+            else if currentCount == 9{
+                //rWord3.text = randomRhymeWord
+                print(randomRhymeWord)
+            }
+            else if currentCount == 8{
+                //rWord4.text = randomRhymeWord
+                print(randomRhymeWord)
+            }
+            else if currentCount == 7{
+                //rWord5.text = randomRhymeWord
+                print(randomRhymeWord)
+            }
+            else{
+                //rWord6.text = randomRhymeWord
+                print(randomRhymeWord)
+            }
+        }
+        
+    }
+    
     
     func updateExampleInts(array: [Int])
     {
@@ -391,6 +468,8 @@ class ViewController: UIViewController {
     }
 
 }
+
+
 
 
 

@@ -8,6 +8,8 @@
 
 import UIKit
 import SpeechKit
+var myText:String!
+var wordUni: String = ""
 
 class TalkViewController: UIViewController, SKTransactionDelegate {
 
@@ -30,7 +32,7 @@ class TalkViewController: UIViewController, SKTransactionDelegate {
     let delay = 3.0
     
     
-    var myText:String!
+    
         // State Logic: IDLE -> LISTENING -> PROCESSING -> repeat
     enum SKSState {
         case SKSIdle
@@ -145,6 +147,12 @@ class TalkViewController: UIViewController, SKTransactionDelegate {
         //Mark1
         print(recognition.text)
         myText = recognition.text
+        wordUni = myText.lastWord
+        wordUni = wordUni.lowercaseString
+        print(wordUni)
+        
+        ViewController().findRhymeWord(wordUni)
+       
         
         state = .SKSIdle
     }
@@ -206,4 +214,21 @@ class TalkViewController: UIViewController, SKTransactionDelegate {
 
 
     
+}
+
+extension String {
+    var byWords: [String] {
+        var result:[String] = []
+        enumerateSubstringsInRange(characters.indices, options: .ByWords) {
+            guard let substring = $0.substring else { return }
+            result.append(substring)
+        }
+        return result
+    }
+    var lastWord: String {
+        return byWords.last ?? ""
+    }
+    func lastWords(maxWords: Int) -> [String] {
+        return Array(byWords.suffix(maxWords))
+    }
 }
