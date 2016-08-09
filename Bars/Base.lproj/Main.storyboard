@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mdA-dN-J7K">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -104,6 +104,20 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="enl-m8-IXB"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="rWord5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-8d-zb9">
+                                <rect key="frame" x="271" y="173" width="57" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="115" id="gkF-gs-oyg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="gkF-gs-oyg"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -257,20 +271,13 @@
                                     <action selector="d2Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MZe-EK-ANu"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="rWord5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxe-8d-zb9">
-                                <rect key="frame" x="271.5" y="173" width="57" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="115" id="gkF-gs-oyg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="gkF-gs-oyg"/>
-                                    </mask>
-                                </variation>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mX-V4-ovI">
+                                <rect key="frame" x="122" y="28" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="testApp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XDn-qZ-E7q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -305,6 +312,7 @@
                             <constraint firstItem="fSq-Hj-uw3" firstAttribute="leading" secondItem="hKe-4I-3xq" secondAttribute="trailing" constant="-115" id="VVX-Tp-9RW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fj7-WZ-Vid" secondAttribute="trailing" id="VlE-XB-g4v"/>
                             <constraint firstItem="4Yx-yI-7iK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Whv-fI-inG"/>
+                            <constraint firstItem="6mX-V4-ovI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="XXA-xT-By3"/>
                             <constraint firstItem="pMh-Ra-Edx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="22" id="Z8S-t6-Qo7"/>
                             <constraint firstItem="S6z-jm-Qk1" firstAttribute="leading" secondItem="fSq-Hj-uw3" secondAttribute="trailing" constant="20" id="ZpH-42-kAQ"/>
                             <constraint firstItem="Wmw-Zi-7td" firstAttribute="leading" secondItem="hmP-hu-Lrx" secondAttribute="trailing" constant="-56" id="aWM-vj-D9u"/>
@@ -318,6 +326,7 @@
                             <constraint firstItem="5Do-EP-ERy" firstAttribute="top" secondItem="UkV-Fc-4RH" secondAttribute="bottom" constant="47" id="gO1-gR-Iex"/>
                             <constraint firstItem="pxe-8d-zb9" firstAttribute="top" secondItem="ZgQ-kB-zUA" secondAttribute="bottom" constant="-20" id="hKd-fn-g9I"/>
                             <constraint firstItem="fSq-Hj-uw3" firstAttribute="leading" secondItem="Wkb-rS-RGT" secondAttribute="trailing" id="hYw-cL-Ocm"/>
+                            <constraint firstItem="6mX-V4-ovI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="haM-fz-xZt"/>
                             <constraint firstItem="oqR-qL-ENu" firstAttribute="leading" secondItem="Z1W-8E-2n6" secondAttribute="trailing" constant="-5" id="iDt-wW-9zY"/>
                             <constraint firstItem="fSq-Hj-uw3" firstAttribute="leading" secondItem="Wkb-rS-RGT" secondAttribute="trailing" constant="-115" id="j8P-Gn-i1G"/>
                             <constraint firstItem="ZgQ-kB-zUA" firstAttribute="leading" secondItem="pxe-8d-zb9" secondAttribute="trailing" constant="15" id="jbk-2b-hT4"/>
@@ -379,13 +388,12 @@
                         <outlet property="eWord1" destination="hKe-4I-3xq" id="8Ls-bu-Bxa"/>
                         <outlet property="eWord2" destination="ooK-CR-xWw" id="dKq-Rd-bna"/>
                         <outlet property="progressBar" destination="Fj7-WZ-Vid" id="7SC-7R-Ktb"/>
-                        <outlet property="rWord1" destination="Wmw-Zi-7td" id="h0H-gw-hWs"/>
+                        <outlet property="rWord1" destination="Wmw-Zi-7td" id="Pa8-Pq-zRd"/>
                         <outlet property="rWord2" destination="Z1W-8E-2n6" id="mhT-db-nJD"/>
                         <outlet property="rWord3" destination="oqR-qL-ENu" id="i4h-Vh-l2t"/>
                         <outlet property="rWord4" destination="hmP-hu-Lrx" id="FdI-SN-C2o"/>
                         <outlet property="rWord5" destination="pxe-8d-zb9" id="V8R-03-M2k"/>
                         <outlet property="rWord6" destination="ZgQ-kB-zUA" id="7lJ-gQ-aGG"/>
-                        <outlet property="rhymeWord" destination="pMh-Ra-Edx" id="3ui-Gb-vjj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

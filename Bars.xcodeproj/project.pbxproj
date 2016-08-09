@@ -21,10 +21,12 @@
 		C4C358391D47DA8F00CC3F2E /* sk_error.pcm in Resources */ = {isa = PBXBuildFile; fileRef = C4C358351D47DA8F00CC3F2E /* sk_error.pcm */; };
 		C4C3583A1D47DA8F00CC3F2E /* sk_start.pcm in Resources */ = {isa = PBXBuildFile; fileRef = C4C358361D47DA8F00CC3F2E /* sk_start.pcm */; };
 		C4C3583B1D47DA8F00CC3F2E /* sk_stop.pcm in Resources */ = {isa = PBXBuildFile; fileRef = C4C358371D47DA8F00CC3F2E /* sk_stop.pcm */; };
+		C4C3583E1D495EA800CC3F2E /* WordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3583D1D495EA800CC3F2E /* WordAPI.swift */; };
 		C4D04D381D41821D00AE2714 /* SKSConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D04D371D41821D00AE2714 /* SKSConfiguration.swift */; };
 		C4D04D441D41892700AE2714 /* BackgroundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D04D431D41892700AE2714 /* BackgroundMusic.swift */; };
 		C4D04D481D418CDC00AE2714 /* barstransparentj.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D04D471D418CDC00AE2714 /* barstransparentj.png */; };
 		C4DBB1451D3FF139007C8524 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4DBB1441D3FF139007C8524 /* AVFoundation.framework */; };
+		C4E09DCE1D4AA95400D44CCA /* GlobalVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E09DCD1D4AA95400D44CCA /* GlobalVariable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,10 +47,12 @@
 		C4C358351D47DA8F00CC3F2E /* sk_error.pcm */ = {isa = PBXFileReference; lastKnownFileType = file; path = sk_error.pcm; sourceTree = "<group>"; };
 		C4C358361D47DA8F00CC3F2E /* sk_start.pcm */ = {isa = PBXFileReference; lastKnownFileType = file; path = sk_start.pcm; sourceTree = "<group>"; };
 		C4C358371D47DA8F00CC3F2E /* sk_stop.pcm */ = {isa = PBXFileReference; lastKnownFileType = file; path = sk_stop.pcm; sourceTree = "<group>"; };
+		C4C3583D1D495EA800CC3F2E /* WordAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordAPI.swift; sourceTree = "<group>"; };
 		C4D04D371D41821D00AE2714 /* SKSConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKSConfiguration.swift; sourceTree = "<group>"; };
 		C4D04D431D41892700AE2714 /* BackgroundMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundMusic.swift; sourceTree = "<group>"; };
 		C4D04D471D418CDC00AE2714 /* barstransparentj.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barstransparentj.png; sourceTree = "<group>"; };
 		C4DBB1441D3FF139007C8524 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C4E09DCD1D4AA95400D44CCA /* GlobalVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariable.swift; sourceTree = "<group>"; };
 		CCCA5A976330AA7544D45C0A /* Pods-Bars.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bars.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bars/Pods-Bars.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,9 +110,9 @@
 		C48865E01D37FA8100D2722C /* Bars */ = {
 			isa = PBXGroup;
 			children = (
-				C476F44B1D42CFA50015E59A /* TalkViewController.swift */,
 				C48865E11D37FA8100D2722C /* AppDelegate.swift */,
 				C48865E31D37FA8100D2722C /* ViewController.swift */,
+				C4E09DCD1D4AA95400D44CCA /* GlobalVariable.swift */,
 				C42FBCA21D4026EF001CDDB9 /* Beat1.mp3 */,
 				C4D04D471D418CDC00AE2714 /* barstransparentj.png */,
 				C48865E51D37FA8100D2722C /* Main.storyboard */,
@@ -124,6 +128,8 @@
 		C4C358331D47D84300CC3F2E /* Speech Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				C4C3583D1D495EA800CC3F2E /* WordAPI.swift */,
+				C476F44B1D42CFA50015E59A /* TalkViewController.swift */,
 				C4D04D371D41821D00AE2714 /* SKSConfiguration.swift */,
 				C4C3582F1D47D71700CC3F2E /* SKSNLUViewController.swift */,
 			);
@@ -278,7 +284,9 @@
 				C48865E21D37FA8100D2722C /* AppDelegate.swift in Sources */,
 				C476F44C1D42CFA50015E59A /* TalkViewController.swift in Sources */,
 				C4D04D441D41892700AE2714 /* BackgroundMusic.swift in Sources */,
+				C4C3583E1D495EA800CC3F2E /* WordAPI.swift in Sources */,
 				C4C358301D47D71700CC3F2E /* SKSNLUViewController.swift in Sources */,
+				C4E09DCE1D4AA95400D44CCA /* GlobalVariable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

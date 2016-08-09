@@ -8,8 +8,21 @@
 
 import UIKit
 import SpeechKit
-var myText:String!
-var wordUni: String = ""
+
+enum SKSState {
+    case SKSIdle
+    case SKSListening
+    case SKSProcessing
+}
+
+var language: String!
+var recognitionType: String!
+var stopOn: SKTransactionEndOfSpeechDetection!
+var skSession:SKSession?
+var skTransaction:SKTransaction?
+var state = SKSState.SKSIdle
+var volumePollTimer: NSTimer?
+
 
 class TalkViewController: UIViewController, SKTransactionDelegate {
 
@@ -19,14 +32,7 @@ class TalkViewController: UIViewController, SKTransactionDelegate {
     
     @IBOutlet weak var label: UILabel!
     // Settings
-    var language: String!
-    var recognitionType: String!
-    var stopOn: SKTransactionEndOfSpeechDetection!
-    var skSession:SKSession?
-    var skTransaction:SKTransaction?
-    var state = SKSState.SKSIdle
-    var volumePollTimer: NSTimer?
-    @IBOutlet weak var listeningLabel: UILabel!
+        @IBOutlet weak var listeningLabel: UILabel!
     @IBOutlet weak var volumeLevelProgressView: UIProgressView?
     var timer = NSTimer()
     let delay = 3.0
@@ -34,22 +40,18 @@ class TalkViewController: UIViewController, SKTransactionDelegate {
     
     
         // State Logic: IDLE -> LISTENING -> PROCESSING -> repeat
-    enum SKSState {
-        case SKSIdle
-        case SKSListening
-        case SKSProcessing
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         runSpeechToText()
+        
 
     }
     
     @IBAction func talkButton(sender: AnyObject) {
         print("button hit")
-        
+        //ViewController().api()
         
         switch state {
         case .SKSIdle:
@@ -77,6 +79,33 @@ class TalkViewController: UIViewController, SKTransactionDelegate {
         label.text = ""
     }
     
+    func startTalk(){
+        print("started process")
+        //ViewController().api()
+        
+        switch state {
+        case .SKSIdle:
+            //begin recording (start on button press), stop on a short pause
+            if let skSession = skSession {
+                skTransaction = skSession.recognizeWithType(recognitionType, detection: stopOn, language: LANGUAGE, delegate: self)
+                
+                startTimer()
+            } else{
+                print("skSession was nil")
+            }
+            
+            
+        case .SKSListening:
+            skTransaction!.stopRecording()
+            
+        case .SKSProcessing:
+            // This will only cancel if we have not received a response from the server yet.
+            skTransaction!.cancel()
+            
+        }
+
+    }
+
     
     func runSpeechToText(){
         recognitionType = SKTransactionSpeechTypeDictation
@@ -97,6 +126,7 @@ class TalkViewController: UIViewController, SKTransactionDelegate {
             return
         }
         
+        print("TalkViewController.runSpeechToText works")
         loadEarcons()
     }
 
@@ -118,6 +148,7 @@ class TalkViewController: UIViewController, SKTransactionDelegate {
         skSession!.errorEarcon = SKAudioFile(URL: NSURL(fileURLWithPath: errorEarconPath!), pcmFormat: audioFormat)
     }
     
+    
     //Transactions
     func recognize() {
         // Start listening to the user.
@@ -132,11 +163,11 @@ class TalkViewController: UIViewController, SKTransactionDelegate {
         
         state = .SKSListening
         startPollingVolume()
-        listeningLabel.text = "Now Listening.."
+        //listeningLabel.text = "Now Listening.."
     }
     
     func transactionDidFinishRecording(transaction: SKTransaction!) {
-        listeningLabel.text = "Finished Recording"
+        //listeningLabel.text = "Finished Recording"
         
         state = .SKSProcessing
         stopPollingVolume()
@@ -151,9 +182,10 @@ class TalkViewController: UIViewController, SKTransactionDelegate {
         wordUni = myText.lastWord
         wordUni = wordUni.lowercaseString
         print(wordUni)
+        print("HERE!")
+        ViewController().findRhymeWord(wordUni)
         
-        //ViewController().findRhymeWord(wordUni)
-       
+        
         
         state = .SKSIdle
     }
@@ -180,13 +212,13 @@ class TalkViewController: UIViewController, SKTransactionDelegate {
     
     func pollVolume() {
         let volumeLevel = skTransaction!.audioLevel
-        volumeLevelProgressView!.setProgress(volumeLevel / Float(100), animated: true)
+        //volumeLevelProgressView!.setProgress(volumeLevel / Float(100), animated: true)
     }
     
     func stopPollingVolume() {
         volumePollTimer!.invalidate()
         volumePollTimer = nil
-        volumeLevelProgressView!.setProgress(Float(0), animated: true)
+        //volumeLevelProgressView!.setProgress(Float(0), animated: true)
     }
     
     // start timer when button is tapped

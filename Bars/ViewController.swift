@@ -12,16 +12,21 @@ import SwiftyJSON
 import Alamofire
 import AlamofireImage
 import AlamofireNetworkActivityIndicator
+import SpeechKit
+
 
 class ViewController: UIViewController {
     
     var time : Float = 0.0
-    var timer: NSTimer?
+    var timer = NSTimer()
     var word: String = ""
-
+    
     @IBOutlet weak var progressBar: UIProgressView!
     
     @IBOutlet weak var rhymeWord: UILabel!
+    
+//    var label = UILabel()
+    
     @IBOutlet weak var rWord1: UILabel!
     @IBOutlet weak var rWord2: UILabel!
     @IBOutlet weak var rWord3: UILabel!
@@ -41,36 +46,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var eWord1: UIButton!
     @IBOutlet weak var eWord2: UIButton!
     
-    var exampleRhymes = [
-    ["snack","black","shack","positive feedback","stack","crack", "paperback", "pack", "asthma attack", "hack", "rack", "insomniac"],
-    ["phone","clone","homegrown","bone","loan","stone", "drone", "postpone", "gemstone", "microphone", "rosetta stone", "testosterone"],
-    ["hop","drop","stop","pop","cop","flop", "shop", "workshop", "lollipop", "mall cop", "tabletop", "eavesdrop"],
-    ["flag","lag","swag","tag","brag","drag", "rag", "zig-zag", "nag", "sag", "royal stag", "tool bag"],
-    ["wish","fish","squish","delish'","swish","dish", "kiss", "selfish", "catfish", "knish", "niche", "jelyfish"],
-    ["applying","flying","crying","spying","sighing","dying", "supplying", "electrifying", "oversimplifying", "identifying", "denying", "disqualifying"],
-    ["short","sport","import","thwart","court","fort", "sort", "financial support", "medical report", "holiday resort", "airport", "escort"],
-    ["supporter","reporter","shorter","mortar","transporter","quarter","exporter", "snorter", "importer", "sorter", "court her", "deport her"],
-    ["beast","priest","deceased","feast","least","increased","east", "ceased", "yeast", "greased", "middle east", "released"],
-    ["way","day","getaway","airway","slay","spray","tray", "radioactive decay", "hideaway", "clay", "paraguay", "lingerie"],
-    ["computer", "hooter", "tutor", "scooter", "shooter", "commuter", "persecutor", "suitor", "", "", "", ""],
-    ["slow", "glow", "grow", "throw", "combo", "free throw", "status quo", "tornado", "indigo", "potato", "pistachio", "tomorrow"],
-    ["dog", "frog", "fog", "smog", "underdog", "dialouge", "demagogue", "analog", "catalogue", "jog", "hedgehog", "monologue"],
-    ["beat", "feet", "eat", "suite", "heat", "wall street", "petite", "concrete", "seat", "trick or treat", "street", "fleet"],
-    ["bars", "stars", "mars", "cars", "tzars", "bazaars", "guitars", "memoirs", "handlebars", "superstars", "seminars", "scars"],
-    ["now", "how", "meow", "you can bow", "highbrow", "endow", "plow", "eyebrow", "chow", "up until now", "cash cow", "somehow", "just now"],
-    ["rattlesnake", "bake", "shake", "fake", "make", "take", "stake", "mistake", "cake", "headache", "emergency brake", "uptake"],
-    ["crises", "slices", "spices", "devices", "vices", "prices", "sacrifices", "suffices", "entices", "advise his", "biases", "revises"],
-    ["rap", "app", "cap", "lap", "wiretap", "recap", "asap", "trap", "scrap",  "kidnap", "shrink wrap", "slap", "nap", "tap", "zap", "flap", "clap", "strap", "map", "booby trap", "zap"],
-    ["flip", "dip", "strip", "lip", "tie clip", "scholarship", "citizenship", "dictatorship", "spaceship", "battleship", "road trip", "warship", "whip"],
-    ["school", "cool", "drool", "piano stool", "dipole molecule",  "swimming pool", "ridicule", "april fool", "you’re a fool", "tool", "jewel", "fuel", "mule"],
-    ["tsunami", "umami", "salami", "pastrami", "origami", "your mommy", "swami", "call me", "johnny", "draw me", "massage me", "scrawny"]
-    ]
+    var labels:[UILabel] = []
     
     var rhymeArray: [String] = []
     var storArray1: [String] = []
     var storArray2: [String] = []
     var storArray3: [String] = []
     var storArray4: [String] = []
+    
     var exampleInts = [0,1,2,3,4,5,6,7,8,9] //change this after updating the database
     var examplePositions = [0,1,2,3,4,5,6]
     var randomInt = 0
@@ -78,6 +61,24 @@ class ViewController: UIViewController {
     var randomRhymeRow = 0
     var random1 = 0
     var random2 = 0
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //        BackgroundMusic.playMusic()
+        //
+        //        randomAWordGenerator()
+        //        randomAlternateGenerator()
+        //
+        //        var helloWorldTimer = NSTimer.scheduledTimerWithTimeInterval(8.1, target: self, selector: #selector(ViewController.randomAlternateGenerator), userInfo: nil, repeats: true)
+        //
+        //        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector:#selector(ViewController.setProgress), userInfo: nil, repeats: true)
+        
+        //        again()
+        
+        TalkViewController().runSpeechToText()
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:#selector(ViewController.loadLabels), userInfo: nil, repeats: true)
+        
+    }
     
     @IBAction func b1Action(sender: AnyObject) {
         buttonChange(storArray1)
@@ -104,9 +105,24 @@ class ViewController: UIViewController {
         buttonChange(storArray4)
     }
     
+    @IBAction func testApp(sender: AnyObject) {
+        print("WePressed Button!")
+        TalkViewController().startTalk()
+        
+    }
+    
+    
+    var cliffRhymes: [String] = ["","","","","",""]
+    
+    func again(){
+        //        rhymeWord.text = "again"
+        //
+        //        labels[0].text = "again"
+    }
+    
     var indexRow = 0
     var indexColumn = 0
-
+    
     func findRhymeWord(spokenWord: String){
         //search through local database and get position of the spoken word
         for row in 0...(exampleRhymes.count-1) {
@@ -114,28 +130,196 @@ class ViewController: UIViewController {
                 if spokenWord == exampleRhymes[row][column]{
                     indexRow = row
                     indexColumn = column
+                    found = true
                     print("row: \(indexRow)")
                     print("column: \(indexColumn)")
                 }
             }
         }
-        setSpokenRhymes()
+        //setSpokenRhymes()
+        
+        if found == true{
+            setSpokenRhymes()
+        }
+        else{
+            print("spokenWord \(spokenWord)")
+            api(spokenWord)
+        }
         
         //if not found, search through rhyme API
+    }
+    
+    
+    
+    
+    func setSearchedWords(){
+        
+        examplePositions = []
+        
+        
+        //api(wordUni)
+//        print("solidRhymes.count:  \(solidRhymes.count)")
+        
+        //        let cliffword = cliffReturn().word
+        //        print(cliffword)
+        //        print(rWord1)
+        //        labels[0].text = "work!!"
+        
+//        cliffRhymes = ["","","","","",""]
+//        var county = 0
+//        while county < 6
+//        {
+//        for county in 0..<6 {
+//            //            cliffRhymes.append(cliffReturn().word)
+//            let temp = cliffReturn().word
+//            print(temp)
+//            cliffRhymes[county] = temp
+////            county += 1
+//        }
+        
+//        rWord1.text = "stuff"
+//        rWord2.text = cliffReturn().word
+//        rWord3.text = cliffReturn().word
+//        rWord4.text = cliffReturn().word
+//        rWord5.text = cliffReturn().word
+//        rWord6.text = cliffReturn().word
+        
+//        print(cliffRhymes)
+        
+        var label = UILabel(frame: CGRectMake(200, 200, 200, 100)) // (x position, y position, width, height)
+        label.backgroundColor = UIColor.yellowColor()
+        label.textAlignment = NSTextAlignment.Center
+        
+        label.font = UIFont(name: "Menlo", size: 30)
+        label.textColor = UIColor.blackColor()
+        label.text = cliffReturn().word
+        print(label.text)
+        self.view.addSubview(label)
+        
+        //loadLabels()
+        
+        
+        //        for int in 0...solidRhymes.count-1{
+        //            examplePositions.append(int)
+        //        }
+        //
+        //        if examplePositions.count < 6{
+        //            var currentCount = examplePositions.count
+        //            randomInt = Int(arc4random_uniform(UInt32(currentCount)))
+        //            var actualInt = examplePositions[randomInt]
+        //            examplePositions.removeAtIndex(randomInt) //suspect
+        //
+        //            if currentCount == 5{
+        //                rWord1.text = solidRhymes[actualInt].word
+        //
+        //                random1 = actualInt
+        //            }
+        //            else if currentCount == 4{
+        //                rWord2.text = solidRhymes[actualInt].word
+        //
+        //                random2 = actualInt
+        //            }
+        //            else if currentCount == 3{
+        //                rWord3.text = solidRhymes[actualInt].word
+        //
+        //            }
+        //            else if currentCount == 2{
+        //                rWord4.text = solidRhymes[actualInt].word
+        //
+        //            }
+        //            else if currentCount == 1{
+        //                rWord5.text = solidRhymes[actualInt].word
+        //
+        //            }
+        //            else{
+        //                rWord6.text = solidRhymes[actualInt].word
+        //
+        //            }
+        //        }
+        
+        
+        //        var counter = examplePositions.count-6
+        
+        //        var internalCounter = 0
+        
+        
+        //        while internalCounter < 6
+        //        {
+        //
+        //            if internalCounter == 0{
+        //                var cliffword = cliffReturn().word
+        //                print(cliffword)
+        //
+        //                //if let rWord1 = rWord1 {
+        //                    print(rWord1)
+        //                    labels[0].text = "work!!"
+        ////                } else {
+        ////                    print("rWord1 is nil")
+        ////                }
+        //
+        //            }
+        //            else if internalCounter == 0{
+        //                rWord2.text = cliffReturn().word
+        //                //                    print(randomRhymeWord)
+        //                //                    random2 = actualInt
+        //            }
+        //            else if internalCounter == 2{
+        //                rWord3.text = cliffReturn().word
+        //                //                    print(randomRhymeWord)
+        //            }
+        //            else if internalCounter == 3{
+        //                rWord4.text = cliffReturn().word
+        //                //                    print(randomRhymeWord)
+        //            }
+        //            else if internalCounter == 4{
+        //                rWord5.text = cliffReturn().word
+        //                //                    print(randomRhymeWord)
+        //            }
+        //            else{
+        //                rWord6.text = cliffReturn().word
+        //                //                    print(randomRhymeWord)
+        //            }
+        //            internalCounter += 1
+        //        }
+        
+        
         
     }
     
-    func api(){
+    
+    //function takes rhyme word and searches api and updates array solidRhymes with 300> score rhymes
+    func api(searchWord: String){
         
-        let apiToContact = "http://rhymebrain.com/talk?function=getRhymes&word=\(wordUni)"
+        let apiToContact = "http://rhymebrain.com/talk?function=getRhymes&word=\(searchWord)"
         // This code will call the rhyming words
         Alamofire.request(.GET, apiToContact).validate().responseJSON() { response in
             switch response.result {
             case .Success:
                 if let value = response.result.value {
                     let rhymeData = JSON(value)
+                    
+                    for thing in 0...rhymeData.count-1{
+                        rhymeAPIArray.append(WordAPI(json: rhymeData[thing]))
+                    }
+                    //rhymeAPIArray
                     //let allRhymeData = rhymeData.arrayValue
-                print(rhymeData)
+                    
+                    //print("Count: \(rhymeAPIArray.count)")
+                    
+                    //print(rhymeAPIArray)
+                    
+                    for thing in 0...rhymeAPIArray.count-1{
+                        if rhymeAPIArray[thing].score >= 300{
+                            solidRhymes.append(rhymeAPIArray[thing])
+                        }
+                    }
+//                    print(solidRhymes)
+//                    print("solidRhymes.count \(solidRhymes.count)")
+                    
+                    
+                    self.again()
+                    
+                    self.setSearchedWords()
                     
                 }
             case .Failure(let error):
@@ -147,7 +331,7 @@ class ViewController: UIViewController {
     func setSpokenRhymes(){
         
         var indexedArray = exampleRhymes[indexRow]
-
+        
         examplePositions = [0,1,2,3,4,5,6,7,8,9,10]
         
         //search through the indexed array for the word, and remove the word when found
@@ -159,7 +343,7 @@ class ViewController: UIViewController {
             }
         }
         
-        while examplePositions.count > 0
+        while examplePositions.count > 5
         {
             var currentCount = examplePositions.count
             randomInt = Int(arc4random_uniform(UInt32(currentCount)))
@@ -197,6 +381,11 @@ class ViewController: UIViewController {
         
     }
     
+    func cliffReturn () -> WordAPI {
+        randomInt = Int(arc4random_uniform(UInt32(solidRhymes.count)))
+//        print("RANDOM INT: \(randomInt)")
+        return solidRhymes.removeAtIndex(randomInt)
+    }
     
     func updateExampleInts(array: [Int])
     {
@@ -213,7 +402,7 @@ class ViewController: UIViewController {
         var number = exampleRhymes.count + 1
         randomInt = Int(arc4random_uniform(UInt32(number))) //picks random number from 0 - one less than the number
         print("First randomInt = \(randomInt)")
-    
+        
         for int in exampleInts // goes through the number array
         {
             if int == randomInt
@@ -279,7 +468,7 @@ class ViewController: UIViewController {
         }
         print("rhymeArray: ")
         print(rhymeArray)
-
+        
     }
     
     func changeAAWords() {
@@ -386,7 +575,7 @@ class ViewController: UIViewController {
                 self.eWord2.setTitle(arrayChosen[random2], forState: UIControlState.Normal)
                 self.eWord2.setTitle(arrayChosen[random2], forState: UIControlState.Highlighted)
             }
-
+            
             count -= 1
             print("what is my count" + String(count))
         }
@@ -461,7 +650,7 @@ class ViewController: UIViewController {
             }
         }
     }
-
+    
     func setProgress() {
         time += 0.1
         progressBar.progress = time / 8.1
@@ -470,26 +659,41 @@ class ViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        BackgroundMusic.playMusic()
-        
-        randomAWordGenerator()
-        randomAlternateGenerator()
-        
-        var helloWorldTimer = NSTimer.scheduledTimerWithTimeInterval(8.1, target: self, selector: #selector(ViewController.randomAlternateGenerator), userInfo: nil, repeats: true)
-        
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector:#selector(ViewController.setProgress), userInfo: nil, repeats: true)
-    }
-
-
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func loadLabels(){
+//        if cliffRhymes[0] == "" {
+//            print("empty")
+//        }
+        // label exists
+//        rWord1.text = "(cliffRhymes[0])"
+        //        rWord2.text = "\(cliffRhymes[1])"
+        //        rWord3.text = "\(cliffRhymes[2])"
+        //        rWord4.text = "\(cliffRhymes[3])"
+        //        rWord5.text = "\(cliffRhymes[4])"
+        //        rWord6.text = "\(cliffRhymes[5])"
+    }
+    
 }
+
+//extension ViewController {
+//    
+//    func loadLabels(){
+//        rWord1.text = cliffRhymes[0]
+//        rWord2.text = cliffRhymes[1]
+//        rWord3.text = cliffRhymes[2]
+//        rWord4.text = cliffRhymes[3]
+//        rWord5.text = cliffRhymes[4]
+//        rWord6.text = cliffRhymes[5]
+//    }
+//    
+//}
 
 
 
